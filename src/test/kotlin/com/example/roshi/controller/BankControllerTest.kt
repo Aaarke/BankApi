@@ -40,8 +40,13 @@ internal class BankControllerTest {
         mockMvc.get("/api/banks/$accountNumber")
             //then
             .andDo { print() }
-            .andExpect { status { isOk() } }
+            .andExpect {
+                status { isOk() }
+                content {
+                    contentType(MediaType.APPLICATION_JSON)
+                    jsonPath("$.trust"){value("0.0")}}
+                    jsonPath("$.transactionFees"){value("1")}}
+            }
     }
 
 
-}
