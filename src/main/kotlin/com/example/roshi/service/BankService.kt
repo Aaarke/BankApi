@@ -10,4 +10,8 @@ class BankService(private val bankDataSource: BankDataSource) {
         return bankDataSource.retrieveBanks()
     }
 
+    fun getBank(accountNumber:Int):Bank?{
+        return bankDataSource.retrieveBank(accountNumber)
+    }
+
 }
